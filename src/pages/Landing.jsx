@@ -1,13 +1,38 @@
 
 //import Feature from '../components/Features'
 import Nav from '../components/Navbar'
-import HeroImg from '../assets/img9.jpg'
+import HeroImg from '../assets/img13.jpg'
 import avatar1 from '../assets/avatar1.jpg'
 import avatar2 from '../assets/avatar2.jpg'
 import avatar3 from '../assets/avatar3.jpg'
 import Feature from '../components/Features'
 import HowItWorks from '../components/HowItWorks' 
 import HowImg from '../assets/img13.png'
+import TestimonialCard from '../components/Testimonials'
+const testimonials = [
+  {
+    id: 1,
+    name: "Sarah Jenkins",
+    role: "Designer",
+    quote: "The encryption gives me peace of mind I couldn't find in other apps.",
+    image: "https://i.pravatar.cc/150?u=sarah"
+  },
+  {
+    id: 2,
+    name: "Marcus Thorne",
+    role: "Software Engineer",
+    quote: "Finally, a journal that respects my privacy and helps me track my consistency.",
+    image: "https://i.pravatar.cc/150?u=marcus"
+  },
+   {
+    id: 2,
+    name: "James Author",
+    role: "UI/UX Enthusiast",
+    quote: "Its has really helped conquer my subconcious thoughts.",
+    image: "https://i.pravatar.cc/150?u=james"
+  }
+];
+
 export default function Landing(){
     return(
         <>
@@ -144,9 +169,13 @@ export default function Landing(){
 
             {/**Testimonials */}
 
-            <section>
-<h3>hi</h3>
-            </section>
+           <section className="py-20 bg-slate-50 dark:bg-slate-900/50">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {testimonials.map((t) => (
+          <TestimonialCard key={t.id} {...t} />
+        ))}
+      </div>
+    </section>
 
             {/*reach out*/ }
         </main>
