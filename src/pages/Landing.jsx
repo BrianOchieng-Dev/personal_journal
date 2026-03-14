@@ -169,16 +169,100 @@ export default function Landing(){
 
             {/**Testimonials */}
 
-           <section className="py-20 bg-slate-50 dark:bg-slate-900/50">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {testimonials.map((t) => (
-          <TestimonialCard key={t.id} {...t} />
-        ))}
-      </div>
-    </section>
+           <section class="py-24 bg-primary/5" id="testimonials">
+           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+            <h2 class="text-slate-900 dark:text-white text-3xl font-bold">Trusted by Mindful Individuals</h2>
+            </div></div>
+            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {testimonials.map((t) => (
+                <TestimonialCard key={t.id} {...t} />
+                ))}
+            </div>
+            
+            </section>
 
             {/*reach out*/ }
+
+                <section class="py-24 bg-primary text-white text-center overflow-hidden relative">
+                <div class="absolute inset-0 bg-primary opacity-90"></div>
+                <div class="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
+                <div class="relative z-10 max-w-4xl mx-auto px-4">
+                <h2 class="text-4xl md:text-5xl font-black mb-6">Start your private journal today</h2>
+                <p class="text-white/80 text-lg mb-10 max-w-2xl mx-auto">Join thousands of others who have found clarity and peace of mind. Your first 30 days are completely free.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button class="bg-white text-primary text-lg font-bold h-16 px-10 rounded-xl hover:scale-105 transition-transform w-full sm:w-auto">Get Started Free</button>
+                <p class="text-sm text-white/60">No credit card required.</p>
+                </div>
+                </div>
+                </section>
+
+                
         </main>
+
+                        <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12">
+                <div class="col-span-2 lg:col-span-2 flex flex-col gap-6">
+                <div class="flex items-center gap-2">
+                <div class="flex items-center justify-center size-8 bg-primary rounded-lg text-white">
+                <span class="material-symbols-outlined text-xl">auto_stories</span>
+                </div>
+                <h2 class="text-slate-900 dark:text-white text-lg font-bold tracking-tight">MindVault</h2>
+                </div>
+                <p class="text-slate-500 dark:text-slate-400 max-w-xs">
+                                        The world's most private digital journal. Designed for reflection, clarity, and growth.
+                                    </p>
+                <div class="flex gap-4">
+                <a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+                <a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+                <a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+                </div>
+                </div>
+                <div>
+                <h5 class="text-slate-900 dark:text-white font-bold mb-6">Product</h5>
+                <ul class="flex flex-col gap-4 text-slate-500 dark:text-slate-400 text-sm">
+                <li><a class="hover:text-primary transition-colors" href="#">Features</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Security</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Mobile App</a></li>
+                </ul>
+                </div>
+                <div>
+                <h5 class="text-slate-900 dark:text-white font-bold mb-6">Company</h5>
+                <ul class="flex flex-col gap-4 text-slate-500 dark:text-slate-400 text-sm">
+                <li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Press</a></li>
+                </ul>
+                </div>
+                <div>
+                <h5 class="text-slate-900 dark:text-white font-bold mb-6">Legal</h5>
+                <ul class="flex flex-col gap-4 text-slate-500 dark:text-slate-400 text-sm">
+                <li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#">Compliance</a></li>
+                </ul>
+                </div>
+                </div>
+                <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs">
+                <p>© 2024 MindVault Journal. All rights reserved.</p>
+                <div class="flex gap-6">
+                <button class="flex items-center gap-1 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+                <span class="material-symbols-outlined text-sm">language</span>
+                                        English (US)
+                                    </button>
+                <button class="flex items-center gap-1 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+                <span class="material-symbols-outlined text-sm">light_mode</span>
+                                        Light Mode
+                                    </button>
+                </div>
+                </div>
+                </div>
+                </footer>
         </>
     )
 }
