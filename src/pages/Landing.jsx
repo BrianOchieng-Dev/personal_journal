@@ -4,12 +4,13 @@ import avatar1 from '../assets/avatar1.jpg'
 import avatar2 from '../assets/avatar2.jpg'
 import avatar3 from '../assets/avatar3.jpg'
 import HeroImg from '../assets/img12.jpg'
+import Feature from '../components/Features'
 export default function Landing(){
     return(
         <>
         <Nav/>
         <main>
-            <section class="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-32">
+            <section class="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-32" id="home">
 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 <div className="flex flex-col gap-8">
@@ -69,10 +70,49 @@ data-alt="A modern clean digital journal interface illustration" style={{ backgr
 </div>
 </div></section>
 
-{{/*features section*/}}
+
          <section id="features">
-            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-4">
+            <h2 class="text-primary text-sm font-bold uppercase tracking-widest">Core Features</h2>
+            <h3 class="text-slate-900 dark:text-white text-4xl font-black tracking-tight">Designed for Your Peace of Mind</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-lg">Experience a journaling tool that prioritizes your privacy, productivity, and personal reflection.</p>
+            </div>
+            <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <Feature
+                icon="lock"
+                title="Private Encryption"
+                description="Your thoughts are for your eyes only. We use industry-leading end-to-end encryption to secure every word."
+                />
+                <Feature
+                icon="format_size"
+                title="Rich Text Writing"
+                description="Express yourself fully with advanced formatting. Use bold, italics, lists, and images to bring your stories to life."
+                />
+                <Feature
+                icon="schedule"
+                title="Timestamped Entries"
+                description="Every thought is automatically logged with the exact moment of inspiration, creating a perfect chronological record."
+                />
+                <Feature
+                icon="view_timeline"
+                title="Organized Timeline"
+                description="Visualize your personal growth through a clean, chronological feed that makes browsing past entries effortless."
+                />
+                <Feature
+                icon="search"
+                title="Fast Search"
+                description="Instantly find past reflections with our powerful indexing engine. Search by keyword, date, or sentiment."
+                />
+                <Feature
+                icon="insights"
+                title="Mood Tracking"
+                description="Understand your emotional patterns over time with integrated mood tracking and visual analytics."
+                />
+            </div>
+            </div>
          </section>
+
         </main>
         </>
     )
