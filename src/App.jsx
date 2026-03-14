@@ -1,5 +1,5 @@
 
-import Landing from './pages/LandingPage'
+import Landing from './pages/Landing'
 export default function App(){
   return(
     <>
