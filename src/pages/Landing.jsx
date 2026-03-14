@@ -54,7 +54,7 @@ export default function Landing(){
 </div>
 <div className="relative">
 <div className="absolute -inset-4 bg-primary/5 rounded-3xl blur-2xl"></div>
-<div className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden aspect-[4/3] flex items-center justify-center" data-alt="A modern clean digital journal interface illustration" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLkst4lDrIrmz_fNUxv84Krq_kc3Wxm1AFTuZIKf6U0k5IS2MwnuVNXmpwwwM10TsjXgFxC9nKo9j5Rl5ZwkZWzUxmJgOqDGzEsuEKQWUKB2eWKbeWtfpatkRtF3avPP1pHd3qjPh3aUb_2JFOJi5r3dTbuZocft6ySCHz6h5ToBda5-tsqxG3SdKufH65bigzTw6b583zTogG8cOtIJyrAnqDxl712LQEwnQ6J-TYHHxzg_xtNMS5SGZZ54eSeIOqAkq7x-YS-kim')">
+<div className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden aspect-[4/3] flex items-center justify-center" data-alt="A modern clean digital journal interface illustration" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLkst4lDrIrmz_fNUxv84Krq_kc3Wxm1AFTuZIKf6U0k5IS2MwnuVNXmpwwwM10TsjXgFxC9nKo9j5Rl5ZwkZWzUxmJgOqDGzEsuEKQWUKB2eWKbeWtfpatkRtF3avPP1pHd3qjPh3aUb_2JFOJi5r3dTbuZocft6ySCHz6h5ToBda5-tsqxG3SdKufH65bigzTw6b583zTogG8cOtIJyrAnqDxl712LQEwnQ6J-TYHHxzg_xtNMS5SGZZ54eSeIOqAkq7x-YS-kim')" }}>
 <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur p-8 rounded-xl border border-slate-200 dark:border-slate-700 w-4/5 shadow-xl">
 <div className="h-4 w-1/3 bg-primary/20 rounded mb-4"></div>
 <div className="h-8 w-2/3 bg-slate-200 dark:bg-slate-700 rounded mb-6"></div>
