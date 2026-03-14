@@ -3,7 +3,7 @@ import Nav from '../components/Navbar'
 import avatar1 from '../assets/avatar1.jpg'
 import avatar2 from '../assets/avatar2.jpg'
 import avatar3 from '../assets/avatar3.jpg'
-import HeroImg from '../assets/img8.jpg'
+import HeroImg from '../assets/img12.jpg'
 export default function Landing(){
     return(
         <>
@@ -14,7 +14,7 @@ export default function Landing(){
 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 <div className="flex flex-col gap-8">
 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider w-fit">
-<span className="material-symbols-outlined text-sm">verified_user</span>Encrypted &amp; Private</div>
+<span className="material-symbols-outlined text-sm  ">verified_user</span>Encrypted &amp; Private</div>
 <div className="flex flex-col gap-4">
 <h1 className="text-slate-900 dark:text-white text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">Your Mind Deserves a <span className="text-primary">Private Space</span>
 </h1>
@@ -68,6 +68,11 @@ data-alt="A modern clean digital journal interface illustration" style={{ backgr
 </div>
 </div>
 </div></section>
+
+{{/*features section*/}}
+         <section id="features">
+            
+         </section>
         </main>
         </>
     )
