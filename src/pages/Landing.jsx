@@ -1,7 +1,7 @@
 
 //import Feature from '../components/Features'
 import Nav from '../components/Navbar'
-import HeroImg from '../assets/img13.jpg'
+import HeroImg from '../assets/img10.jpg'
 import avatar1 from '../assets/avatar1.jpg'
 import avatar2 from '../assets/avatar2.jpg'
 import avatar3 from '../assets/avatar3.jpg'
