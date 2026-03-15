@@ -21,7 +21,7 @@ export default function Nav(){
                                         </nav>
                                         <div className="flex items-center  justify-center gap-4">
                     <Link to="/login" className="hidden sm:block text-slate-600 dark:text-slate-300 text-sm font-medium px-4">Log in</Link>
-                    <Link to="/journal" className="bg-primary text-white text-sm font-bold  px-6 py-2 rounded-lg hover:opacity-90 transition-opacity">Start Journaling</Link>
+                    <Link to="/register" className="bg-primary text-white text-sm font-bold  px-6 py-2 rounded-lg hover:opacity-90 transition-opacity">Start Journaling</Link>
                     </div>
                     </div>
                     </div>
