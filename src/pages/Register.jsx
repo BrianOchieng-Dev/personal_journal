@@ -1,14 +1,38 @@
 
-import {Link} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
 import {useState} from 'react'
+import { registerUser } from '../firebase/auth'
 export default function Register(){
-            const(first, setFirst) = useState("")
-            const(email, setEmail) = useState("")
-            const(password, setPassword) = useState("")
-            const(confirmPassword, setConfirmPassword) = useState("")
- const handleRegister = async(e) => {
-    e.PreventDefault()
- }
+             const navigate = useNavigate();
+            //const(first, setFirst) = useState("")
+            const[email, setEmail] = useState("")
+            const[password, setPassword] = useState("")
+            //const(confirmPassword, setConfirmPassword) = useState("")
+             const[loading, setLoading] = useState(false)
+             const[message, setMessage] = useState("")
+ 
+                const handleRegister = async (e) => {
+                    e.preventDefault();
+                    setLoading(true);
+                    setMessage("");
+
+                    try {
+                    const userCredential = await registerUser(email, password);
+                    setMessage("Account created successfully!");
+                    console.log(userCredential); // shows user info in console
+                    setEmail("");
+                    setPassword("");
+                    
+                    setTimeout(() => {
+                    navigate('/login'); // replace with your login route
+                }, 1000);
+                    } catch (error) {
+                    setMessage(error.message);
+                    } finally {
+                    setLoading(false)  ;
+                    }
+                };
+
 
     return(
         <>
@@ -30,49 +54,64 @@ export default function Register(){
         </section>
         <main className="flex flex-1 justify-center py-12 px-6 md:px-10 lg:px-40">
             <div class="w-full max-w-[480px] flex flex-col gap-8">
-            <!-- Hero Section -->
+          
             <div class="flex flex-col gap-3">
             <h1 class="text-4xl font-black tracking-tight text-slate-900 dark:text-white">Create your Vault</h1>
             <p class="text-slate-600 dark:text-slate-400 text-lg">Start your private journey with military-grade end-to-end encryption.</p>
             </div>
-            <!-- Registration Form -->
-                <form class="flex flex-col gap-6" onsubmit="return false;">
-                <!-- Full Name -->
-                <div class="flex flex-col gap-2">
-                <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Full Name</label>
-                <input class="flex w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 h-14 px-4 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" 
+
+            {message && (
+                <div className="p-4 rounded-lg bg-primary/10 text-primary text-sm font-medium text-center">
+                    {message}
+                </div>
+            )}
+           
+                <form className="flex flex-col gap-6" onSubmit={handleRegister}>
+               
+                {/*<div className="flex flex-col gap-2">
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Full Name</label>
+                <input className="flex w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 h-14 px-4 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" 
                  value={first} onChange={(e)=> setName(e.target.value)} placeholder="Enter your full name" type="text"/>
+                </div>*/}
+                
+                <div className="flex flex-col gap-2">
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Email Address</label>
+                <input className="flex w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 h-14 px-4 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" 
+                 value={email} onChange={(e)=> setEmail(e.target.value)} placeholder="email@example.com" type="email" required/>
                 </div>
-                <!-- Email Address -->
-                <div class="flex flex-col gap-2">
-                <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Email Address</label>
-                <input class="flex w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 h-14 px-4 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" 
-                 value={email} onChange={(e)=> setEmail(e.target.value)} placeholder="email@example.com" type="email"/>
-                </div>
-                <!-- Password -->
-                <div class="flex flex-col gap-2">
-                <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Password</label>
-                <div class="relative flex items-center">
-                <input class="flex w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 h-14 pl-4 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" 
-                 value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="Create a strong password" type="password"/>
-                <button class="absolute right-4 text-slate-400 hover:text-primary transition-colors" type="button">
-                <span class="material-symbols-outlined">visibility</span>
+               
+                <div className="flex flex-col gap-2">
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Password</label>
+                <div className="relative flex items-center">
+                <input className="flex w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 h-14 pl-4 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" 
+                 value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="Create a strong password" type="password" required/>
+                <button className="absolute right-4 text-slate-400 hover:text-primary transition-colors" type="button">
+                <span className="material-symbols-outlined">visibility</span>
                 </button>
                 </div>
-                <p class="text-xs text-slate-500 mt-1">Must be at least 8 characters with one number.</p>
+                <p className="text-xs text-slate-500 mt-1">Must be at least 8 characters with one number.</p>
                 </div>
-                <!-- Confirm Password -->
-                <div class="flex flex-col gap-2">
-                <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Confirm Password</label>
-                <div class="relative flex items-center">
-                <input class="flex w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 h-14 pl-4 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" 
+               
+                {/* <div className="flex flex-col gap-2">
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Confirm Password</label>
+                <div className="relative flex items-center">
+                <input className="flex w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 h-14 pl-4 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" 
                 value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)}  placeholder="Repeat your password" type="password"/>
-                <button class="absolute right-4 text-slate-400 hover:text-primary transition-colors"  onClick={handleRegister}  type="button">
-                <span class="material-symbols-outlined">visibility</span>
+                <button className="absolute right-4 text-slate-400 hover:text-primary transition-colors" type="button">
+                <span className="material-symbols-outlined">visibility</span>
                 </button>
                 </div>
-                </div>
-            </div>
+                </div> */}
+                
+                <button 
+                  type="submit"
+                  className="mt-2 flex w-full items-center justify-center rounded-lg bg-primary h-14 text-white font-bold hover:bg-primary/90 transition-all disabled:opacity-70 disabled:cursor-not-allowed"  
+                  disabled={loading}
+                >
+                   {loading ? "Creating account..." : "Sign Up"} 
+                </button>
+        </form>
+        </div>
         </main>
         </>
     )
