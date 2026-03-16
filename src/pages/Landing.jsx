@@ -73,7 +73,7 @@ export default function Landing(){
                 <div className="relative">
                 <div className="absolute -inset-4 bg-primary/5 rounded-3xl blur-2xl"></div>
                 <div className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border bg-center bg-cover border-slate-200 dark:border-slate-800 overflow-hidden aspect-4/3 flex items-center justify-center" data-alt="A modern clean digital journal interface illustration" 
-                style={{ backgroundImg: `url(${HeroImg})`}} >
+                style={{ backgroundImage: `url(${HeroImg})`}} >
                 <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur p-8 rounded-xl border border-slate-200 dark:border-slate-700 w-4/5 shadow-xl">
                 <div className="h-4 w-1/3 bg-primary/20 rounded mb-4"></div>
                 <div className="h-8 w-2/3 bg-slate-200 dark:bg-slate-700 rounded mb-6"></div>
@@ -156,7 +156,7 @@ export default function Landing(){
                     </div>
                     <div class="w-full lg:w-1/2">
                     <div class="rounded-3xl overflow-hidden shadow-2xl bg-slate-900 aspect-square relative" data-alt="A peaceful person using a digital journal in a cozy room" 
-                    style={{backgroundImg: `url(${HowImg})`}}>
+                    style={{backgroundImage: `url(${HowImg})`}}>
                     <div class="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent"></div>
                     <div class="absolute bottom-8 left-8 right-8 p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
                     <p class="text-white font-medium italic">"Journaling with MindVault has helped me process my daily stress and see how much I've grown this year."</p>
