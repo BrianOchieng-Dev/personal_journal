@@ -9,6 +9,7 @@ export default function Login(){
     const[password, setPassword] = useState("")
     const[loading, setLoading] = useState(false)
     const[message, setMessage] = useState("")
+    const[isPasswordVisible, setIsPasswordVisible] = useState(false)
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -90,9 +91,15 @@ export default function Login(){
                 <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Password</label>
                 <div className="relative flex items-center">
                 <input className="flex w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 h-14 pl-4 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" 
-                 value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="Enter your password" type="password" required/>
-                <button className="absolute right-4 text-slate-400 hover:text-primary transition-colors" type="button">
-                <span className="material-symbols-outlined">visibility</span>
+                 value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="Enter your password" type={isPasswordVisible ? "text" : "password"} required/>
+                <button 
+                    className="absolute right-4 text-slate-400 hover:text-primary transition-colors" 
+                    type="button" 
+                    onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+                >
+                <span className="material-symbols-outlined">
+                    {isPasswordVisible ? "visibility_off" : "visibility"}
+                </span>
                 </button>
                 </div>
                 </div>
