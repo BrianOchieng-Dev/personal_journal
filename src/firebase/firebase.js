@@ -5,13 +5,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDXoSPVLkTi3EaTr-SN80LoevK4WJIAVo0",
-  authDomain: "personal-journal-2026.firebaseapp.com",
-  projectId: "personal-journal-2026",
-  storageBucket: "personal-journal-2026.firebasestorage.app",
-  messagingSenderId: "323966265914",
-  appId: "1:323966265914:web:73efc5add5cf6dbbebe303",
-  measurementId: "G-XCBSCYB89D"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase

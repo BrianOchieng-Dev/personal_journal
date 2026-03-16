@@ -2,6 +2,7 @@
 import {useNavigate, Link} from 'react-router-dom'
 import {useState} from 'react'
 import { registerUser } from '../firebase/auth'
+import secure from '../assets/img9.jpg'
 export default function Register(){
              const navigate = useNavigate();
             //const(first, setFirst) = useState("")
@@ -51,10 +52,10 @@ export default function Register(){
     return(
         <>
         <section>
-    <header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6 py-4 md:px-10 lg:px-40 bg-white dark:bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
-            <div class="flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white">
-            <span class="material-symbols-outlined text-2xl">shield_lock</span>
+    <header className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6 py-4 md:px-10 lg:px-40 bg-white dark:bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+            <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white">
+            <span className="material-symbols-outlined text-2xl">shield_lock</span>
             </div>
             <h2 className="text-xl font-bold tracking-tight">Mid`</h2>
             </div>
@@ -124,39 +125,40 @@ export default function Register(){
                 >
                    {loading ? "Creating account..." : "Sign Up"} 
                 </button>
-        </form>
+                </form>
 
-                        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-slate-200 dark:border-slate-800 pt-8">
-                <div class="flex items-start gap-3">
-                <div class="bg-primary/10 p-2 rounded-lg text-primary">
-                <span class="material-symbols-outlined text-xl">encrypted</span>
+                        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-slate-200 dark:border-slate-800 pt-8">
+                <div className="flex items-start gap-3">
+                <div className="bg-primary/10 p-2 rounded-lg text-primary">
+                <span className="material-symbols-outlined text-xl">encrypted</span>
                 </div>
                 <div>
-                <h4 class="text-sm font-bold text-slate-800 dark:text-slate-200">Zero-Knowledge</h4>
-                <p class="text-xs text-slate-500">Only you can access your data. We can't see it even if we wanted to.</p>
+                <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">Zero-Knowledge</h4>
+                <p className="text-xs text-slate-500">Only you can access your data. We can't see it even if we wanted to.</p>
                 </div>
                 </div>
-                <div class="flex items-start gap-3">
-                <div class="bg-primary/10 p-2 rounded-lg text-primary">
-                <span class="material-symbols-outlined text-xl">verified_user</span>
+                <div className="flex items-start gap-3">
+                <div className="bg-primary/10 p-2 rounded-lg text-primary">
+                <span className="material-symbols-outlined text-xl">verified_user</span>
                 </div>
                 <div>
-                <h4 class="text-sm font-bold text-slate-800 dark:text-slate-200">GDPR Compliant</h4>
-                <p class="text-xs text-slate-500">Your privacy rights are protected by the world's strictest standards.</p>
+                <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">GDPR Compliant</h4>
+                <p className="text-xs text-slate-500">Your privacy rights are protected by the world's strictest standards.</p>
                 </div>
                 </div>
                 </div>
                 </div>
 
-                <div class="hidden lg:flex flex-1 items-center justify-center ml-20">
-                <div class="relative w-full max-w-md aspect-square rounded-3xl bg-gradient-to-br from-primary to-blue-400 overflow-hidden shadow-2xl">
-                <div class="absolute inset-0 opacity-20">
-                <img class="w-full h-full object-cover" data-alt="Abstract blue cybersecurity digital network patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLJl1l8PnzLbzYLDlNud8VD-WNnyuM9AKq5jS-WHVUlGmsD9NxKdOh8QMDZw-aFSyNbPQwsWgU9SO79-FzCemV_L_L8NbVbERbeVtkNpi6_d6t2ibvoOnTCrwG5Y3ekjbGDdER7EqxqBWKdv1jp5BYkv0FHMaUSBpixvdn2L9jLBKKP0bM3eZY5l-xCF2Vdsm8CRC5iMYn11fRd-roCry4gUKy9OHvdtRcthX15e6Lwt0udm0OCCBnXbLZP1za2c90F9GU6c1d9xJy"/>
+                <div className="hidden lg:flex flex-1 items-center justify-center ml-20">
+                <div className="relative w-full max-w-md aspect-square rounded-3xl bg-gradient-to-br from-primary to-blue-400 overflow-hidden shadow-2xl">
+                <div className="absolute inset-0 opacity-20">
+                <img className="w-full h-full object-cover" data-alt="Abstract blue cybersecurity digital network patterns" 
+                src={secure}/>
                 </div>
-                <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-12 text-center">
-                <span class="material-symbols-outlined text-6xl mb-6">lock_reset</span>
-                <h3 class="text-2xl font-bold mb-4">Your Mind, Protected</h3>
-                <p class="text-blue-50/80 leading-relaxed">
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-12 text-center">
+                <span className="material-symbols-outlined text-6xl mb-6">lock_reset</span>
+                <h3 className="text-2xl font-bold mb-4">Your Mind, Protected</h3>
+                <p className="text-blue-500/80 leading-relaxed">
                                                 Join over 50,000 users who trust MindVault for their most personal reflections and ideas. 
                                                 Secure. Private. Forever.
                                             </p>
