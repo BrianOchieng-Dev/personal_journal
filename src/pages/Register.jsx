@@ -27,7 +27,21 @@ export default function Register(){
                     navigate('/login'); // replace with your login route
                 }, 1000);
                     } catch (error) {
-                    setMessage(error.message);
+                        let errorMessage = "An unexpected error occurred. Please try again.";
+                        
+                        if (error.code === 'auth/email-already-in-use') {
+                            errorMessage = "This email is already registered. Try logging in instead.";
+                        } else if (error.code === 'auth/invalid-email') {
+                            errorMessage = "Please enter a valid email address.";
+                        } else if (error.code === 'auth/weak-password') {
+                            errorMessage = "Password is too weak. Must be at least 6 characters.";
+                        } else if (error.code === 'auth/network-request-failed') {
+                            errorMessage = "Network error. Please check your connection.";
+                        } else if (error.message) {
+                            errorMessage = error.message; // Fallback to Firebase message if we don't have a custom one
+                        }
+                        
+                        setMessage(errorMessage);
                     } finally {
                     setLoading(false)  ;
                     }
@@ -111,7 +125,44 @@ export default function Register(){
                    {loading ? "Creating account..." : "Sign Up"} 
                 </button>
         </form>
-        </div>
+
+                        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-slate-200 dark:border-slate-800 pt-8">
+                <div class="flex items-start gap-3">
+                <div class="bg-primary/10 p-2 rounded-lg text-primary">
+                <span class="material-symbols-outlined text-xl">encrypted</span>
+                </div>
+                <div>
+                <h4 class="text-sm font-bold text-slate-800 dark:text-slate-200">Zero-Knowledge</h4>
+                <p class="text-xs text-slate-500">Only you can access your data. We can't see it even if we wanted to.</p>
+                </div>
+                </div>
+                <div class="flex items-start gap-3">
+                <div class="bg-primary/10 p-2 rounded-lg text-primary">
+                <span class="material-symbols-outlined text-xl">verified_user</span>
+                </div>
+                <div>
+                <h4 class="text-sm font-bold text-slate-800 dark:text-slate-200">GDPR Compliant</h4>
+                <p class="text-xs text-slate-500">Your privacy rights are protected by the world's strictest standards.</p>
+                </div>
+                </div>
+                </div>
+                </div>
+
+                <div class="hidden lg:flex flex-1 items-center justify-center ml-20">
+                <div class="relative w-full max-w-md aspect-square rounded-3xl bg-gradient-to-br from-primary to-blue-400 overflow-hidden shadow-2xl">
+                <div class="absolute inset-0 opacity-20">
+                <img class="w-full h-full object-cover" data-alt="Abstract blue cybersecurity digital network patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLJl1l8PnzLbzYLDlNud8VD-WNnyuM9AKq5jS-WHVUlGmsD9NxKdOh8QMDZw-aFSyNbPQwsWgU9SO79-FzCemV_L_L8NbVbERbeVtkNpi6_d6t2ibvoOnTCrwG5Y3ekjbGDdER7EqxqBWKdv1jp5BYkv0FHMaUSBpixvdn2L9jLBKKP0bM3eZY5l-xCF2Vdsm8CRC5iMYn11fRd-roCry4gUKy9OHvdtRcthX15e6Lwt0udm0OCCBnXbLZP1za2c90F9GU6c1d9xJy"/>
+                </div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-12 text-center">
+                <span class="material-symbols-outlined text-6xl mb-6">lock_reset</span>
+                <h3 class="text-2xl font-bold mb-4">Your Mind, Protected</h3>
+                <p class="text-blue-50/80 leading-relaxed">
+                                                Join over 50,000 users who trust MindVault for their most personal reflections and ideas. 
+                                                Secure. Private. Forever.
+                                            </p>
+                </div>
+                </div>
+                </div>
         </main>
         </>
     )
