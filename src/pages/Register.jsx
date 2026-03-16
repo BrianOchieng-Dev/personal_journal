@@ -17,6 +17,13 @@ export default function Register(){
                     setLoading(true);
                     setMessage("");
 
+                    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                    if (!passwordRegex.test(password)) {
+                        setMessage("Password must be at least 8 characters long and include a letter, a number, and a special character.");
+                        setLoading(false);
+                        return;
+                    }
+
                     try {
                     const userCredential = await registerUser(email, password);
                     setMessage("Account created successfully!");
@@ -104,7 +111,7 @@ export default function Register(){
                 <span className="material-symbols-outlined">visibility</span>
                 </button>
                 </div>
-                <p className="text-xs text-slate-500 mt-1">Must be at least 8 characters with one number.</p>
+                <p className="text-xs text-slate-500 mt-1">Must be at least 8 characters with a letter, number, and special character.</p>
                 </div>
                
                 {/* <div className="flex flex-col gap-2">
