@@ -2,3 +2,10 @@
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/container-queries";
 
+@theme {
+  --color-primary: #1337ec;
+  --color-background-light: #f6f6f8;
+  --color-background-dark: #101322;
+  --font-display: "Inter", "sans-serif";
+}
+
