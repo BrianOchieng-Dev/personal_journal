@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { journalService } from '../services/journalService';
-import { format } from 'date-fns';
+import { formatTimelineDate, formatMonthYear } from '../utils/formatDate';
 import Sidebar from '../components/Sidebar';
 
 export default function Timeline() {
@@ -40,8 +40,7 @@ export default function Timeline() {
 
   // Group entries by month/year for the timeline view
   const groupedEntries = filteredEntries.reduce((groups, entry) => {
-    const date = entry.createdAt || new Date();
-    const monthYear = format(date, 'MMMM yyyy');
+    const monthYear = formatMonthYear(entry.createdAt);
     if (!groups[monthYear]) {
       groups[monthYear] = [];
     }
@@ -135,7 +134,7 @@ export default function Timeline() {
                         
                         <div className="flex flex-col md:flex-row gap-4 items-baseline">
                           <span className="text-xs font-bold text-slate-400 dark:text-slate-500 whitespace-nowrap min-w-[80px]">
-                            {entry.createdAt ? format(entry.createdAt, 'EEE, d MMM') : 'Recently'}
+                            {formatTimelineDate(entry.createdAt)}
                           </span>
                           
                           <Link 

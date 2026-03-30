@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { journalService } from '../services/journalService'
-import { format } from 'date-fns'
+import { formatDashboardDate } from '../utils/formatDate'
 import Sidebar from '../components/Sidebar'
 
 export default function Dashboard() {
@@ -98,7 +98,7 @@ export default function Dashboard() {
                 <Link key={entry.id} to={`/editor?id=${entry.id}`} className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm transition-all hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 group">
                    <header className="flex justify-between items-start mb-6">
                       <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                        {entry.createdAt ? format(entry.createdAt, 'MMM d, yyyy') : 'Recently'}
+                        {formatDashboardDate(entry.createdAt)}
                       </span>
                       <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-all group-hover:rotate-45">north_east</span>
                    </header>

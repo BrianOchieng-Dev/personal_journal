@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { journalService } from '../services/journalService';
-import { format } from 'date-fns';
+import { formatEditorDate, formatLastSaved } from '../utils/formatDate';
 import Sidebar from '../components/Sidebar';
 
 export default function Editor() {
@@ -67,7 +67,7 @@ export default function Editor() {
                 navigate(`/editor?id=${newId}`, { replace: true });
             }
             setIsSaved(true);
-            setLastSaved(format(new Date(), 'h:mm a'));
+            setLastSaved(formatLastSaved(new Date()));
         } catch (err) {
             console.error("Save failed:", err);
             setError("Auto-save failed. Check your connection.");
@@ -143,7 +143,7 @@ export default function Editor() {
                             <div className="w-px h-6 bg-slate-200 dark:bg-slate-700 mx-1"></div>
                             <button className="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition-colors whitespace-nowrap">
                                 <span className="material-symbols-outlined text-[20px]">calendar_today</span>
-                                <span className="text-[10px] font-bold uppercase tracking-widest">{format(new Date(), 'MMM d, yyyy')}</span>
+                                <span className="text-[10px] font-bold uppercase tracking-widest">{formatEditorDate(new Date())}</span>
                             </button>
                         </div>
                     </div>
@@ -206,7 +206,7 @@ export default function Editor() {
                         </div>
                         <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-[9px] md:text-[10px] font-bold uppercase tracking-widest">
                             <span className="material-symbols-outlined text-[16px]">schedule</span>
-                            <span><span className="hidden sm:inline">Saved </span>{lastSaved}</span>
+                            <span>{lastSaved}</span>
                         </div>
                     </div>
                     <div className="flex items-center gap-4 md:gap-6">

@@ -1,4 +1,5 @@
 import { db } from '../firebase/firebase';
+import { toJSDate } from '../utils/formatDate';
 import { 
   collection, 
   addDoc, 
@@ -68,8 +69,8 @@ export const journalService = {
         id: doc.id,
         ...doc.data(),
         // Convert Firestore timestamp to JS Date if possible
-        createdAt: doc.data().createdAt?.toDate(),
-        updatedAt: doc.data().updatedAt?.toDate(),
+        createdAt: toJSDate(doc.data().createdAt),
+        updatedAt: toJSDate(doc.data().updatedAt),
       }));
       
       // Sort in-memory to avoid mandatory composite index
