@@ -4,6 +4,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import Editor from './pages/Editor'
+import Settings from './pages/Settings'
 import {Routes, Route} from 'react-router-dom'
 
 export default function App(){
@@ -15,6 +16,7 @@ export default function App(){
       <Route path="/login" element={<Login/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
       <Route path="/editor" element={<Editor/>}/>
+      <Route path="/settings" element={<Settings/>}/>
       </Routes>
     </>
   )

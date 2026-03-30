@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Nav from '../components/Navbar';
 
 export default function Editor() {
@@ -55,10 +55,10 @@ export default function Editor() {
                     </div>
                 </nav>
                 <div className="p-4 border-t border-slate-200 dark:border-slate-800">
-                    <a className="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors" href="#">
+                    <Link to="/settings" className="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors">
                         <span className="material-symbols-outlined">settings</span>
                         <span>Settings</span>
-                    </a>
+                    </Link>
                     <button onClick={() => navigate('/login')} className="w-full flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors mt-1">
                         <span className="material-symbols-outlined text-red-500">logout</span>
                         <span>Logout</span>
