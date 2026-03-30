@@ -1,16 +1,7 @@
-import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useAuth } from './AuthContext';
 import { encryptData, decryptData } from '../utils/crypto';
-
-const VaultContext = createContext();
-
-export function useVault() {
-    const context = useContext(VaultContext);
-    if (!context) {
-        throw new Error('useVault must be used within a VaultProvider');
-    }
-    return context;
-}
+import { VaultContext } from './VaultContextObject';
 
 export function VaultProvider({ children }) {
     const { currentUser } = useAuth();
@@ -19,11 +10,15 @@ export function VaultProvider({ children }) {
 
     // Reset vault when user logs out
     useEffect(() => {
-        if (!currentUser) {
-            setVaultKey(null);
-            setIsLocked(true);
+        if (!currentUser && (vaultKey !== null || isLocked !== true)) {
+            // Defer reset to next tick to avoid cascading render warning/error
+            const timer = setTimeout(() => {
+                setVaultKey(null);
+                setIsLocked(true);
+            }, 0);
+            return () => clearTimeout(timer);
         }
-    }, [currentUser]);
+    }, [currentUser, vaultKey, isLocked]);
 
     const unlockVault = useCallback((passphrase) => {
         if (!passphrase) return false;

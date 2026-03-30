@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { useVault } from '../context/VaultContext';
+import { useVault } from '../hooks/useVault';
 import { journalService } from '../services/journalService';
 import { formatTimelineDate, formatMonthYear } from '../utils/formatDate';
 import Sidebar from '../components/Sidebar';

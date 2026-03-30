@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import { useVault } from '../context/VaultContext';
+import { useVault } from '../hooks/useVault';
 import { deriveKeyHash } from '../utils/crypto';
 
 export default function Settings() {

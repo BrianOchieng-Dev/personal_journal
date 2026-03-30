@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { useVault } from '../context/VaultContext';
+import { useVault } from '../hooks/useVault';
 import { journalService } from '../services/journalService';
 import { formatEditorDate, formatLastSaved } from '../utils/formatDate';
 import Sidebar from '../components/Sidebar';
