@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { journalService } from '../services/journalService';
 import { format } from 'date-fns';
+import Sidebar from '../components/Sidebar';
 
 export default function Timeline() {
-  const navigate = useNavigate();
   const { currentUser } = useAuth();
   const [entries, setEntries] = useState([]);
   const [filteredEntries, setFilteredEntries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     const fetchEntries = async () => {
@@ -50,57 +51,25 @@ export default function Timeline() {
 
   return (
     <div className="flex h-screen overflow-hidden bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
-      {/* Sidebar - Consistent with Dashboard */}
-      <aside className="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col shrink-0">
-        <div className="p-6">
-          <div className="flex items-center gap-2 mb-1" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-            <span className="material-symbols-outlined text-primary text-3xl">menu_book</span>
-            <h1 className="text-xl font-bold tracking-tight">MindVault</h1>
-          </div>
-          <p className="text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-widest">Archive</p>
-        </div>
-        <nav className="flex-1 px-4 space-y-1">
-          <Link 
-            to="/editor"
-            className="w-full flex items-center gap-3 px-3 py-2.5 bg-primary text-white rounded-xl font-bold transition-all hover:bg-primary/90 mb-6 shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-0.5 active:scale-95"
-          >
-            <span className="material-symbols-outlined">add_box</span>
-            <span>New Entry</span>
-          </Link>
-          <div className="space-y-1">
-            <Link to="/dashboard" className="w-full flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors">
-              <span className="material-symbols-outlined">grid_view</span>
-              <span>Overview</span>
-            </Link>
-            <Link to="/timeline" className="w-full flex items-center gap-3 px-4 py-2 bg-primary/10 text-primary rounded-lg font-bold transition-colors">
-              <span className="material-symbols-outlined">history</span>
-              <span>Timeline</span>
-            </Link>
-            <Link to="#" className="w-full flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors">
-              <span className="material-symbols-outlined">star</span>
-              <span>Favorites</span>
-            </Link>
-          </div>
-        </nav>
-        <div className="p-4 border-t border-slate-200 dark:border-slate-800">
-          <Link to="/settings" className="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors">
-            <span className="material-symbols-outlined">settings</span>
-            <span>Settings</span>
-          </Link>
-          <button onClick={() => navigate('/login')} className="w-full flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors mt-1">
-            <span className="material-symbols-outlined text-red-500">logout</span>
-            <span>Logout</span>
-          </button>
-        </div>
-      </aside>
+      {/* Sidebar Component */}
+      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
 
       {/* Main Content Area */}
-      <main className="flex-1 overflow-y-auto bg-slate-50/50 dark:bg-background-dark/50 p-8 lg:p-12 relative">
+      <main className="flex-1 overflow-y-auto bg-slate-50/50 dark:bg-background-dark/50 p-6 lg:p-12 relative">
         <header className="mb-12 max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
-            <div>
-              <h1 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">Your Timeline</h1>
-              <p className="mt-2 text-slate-600 dark:text-slate-400 font-medium">Revisit your thoughts and memories through time.</p>
+            <div className="flex items-center gap-4">
+              {/* Mobile Menu Button */}
+              <button 
+                onClick={() => setIsSidebarOpen(true)}
+                className="lg:hidden p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 shadow-sm"
+              >
+                <span className="material-symbols-outlined">menu</span>
+              </button>
+              <div>
+                <h1 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">Your Timeline</h1>
+                <p className="mt-2 text-slate-600 dark:text-slate-400 font-medium">Revisit your thoughts and memories through time.</p>
+              </div>
             </div>
             <div className="relative group min-w-[300px]">
               <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
@@ -182,16 +151,6 @@ export default function Timeline() {
                             <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed line-clamp-2">
                               {entry.content?.replace(/<[^>]*>/g, '') || 'No content exploration today...'}
                             </p>
-                            
-                            {entry.tags && entry.tags.length > 0 && (
-                              <div className="flex flex-wrap gap-2 mt-4">
-                                {entry.tags.slice(0, 3).map(tag => (
-                                  <span key={tag} className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-500 rounded uppercase tracking-tighter">
-                                    #{tag}
-                                  </span>
-                                ))}
-                              </div>
-                            )}
                           </Link>
                         </div>
                       </div>
@@ -206,7 +165,7 @@ export default function Timeline() {
         {/* Floating Action Button for Mobile */}
         <Link 
           to="/editor" 
-          className="fixed bottom-8 right-8 size-14 bg-primary text-white rounded-full lg:hidden flex items-center justify-center shadow-2xl shadow-primary/40 active:scale-90 transition-transform"
+          className="fixed bottom-8 right-8 size-14 bg-primary text-white rounded-full lg:hidden flex items-center justify-center shadow-2xl shadow-primary/40 active:scale-95 transition-all z-30"
         >
           <span className="material-symbols-outlined text-3xl">add</span>
         </Link>
