@@ -11,9 +11,9 @@ export default function Nav(){
                 <div className="flex items-center justify-center size-8 bg-primary rounded-lg text-white">
                 <span className="material-symbols-outlined text-xl">auto_stories</span>
                 </div>
-                <h2 class="text-slate-900 dark:text-white text-lg font-bold tracking-tight">Mid`</h2>
+                <h2 className="text-slate-900 dark:text-white text-lg font-bold tracking-tight">MindVault</h2>
                  </div>
-                 <nav class="hidden md:flex flex-1 justify-center gap-8">
+                 <nav className="hidden md:flex flex-1 justify-center gap-8">
                     <a className="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#home">Home</a>
                     <a className="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#features">Features</a>
                     <a className="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#how-it-works">How It Works</a>

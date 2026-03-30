@@ -25,7 +25,7 @@ const testimonials = [
     image: "https://i.pravatar.cc/150?u=marcus"
   },
    {
-    id: 2,
+    id: 3,
     name: "James Author",
     role: "UI/UX Enthusiast",
     quote: "Its has really helped conquer my subconcious thoughts.",
@@ -93,13 +93,13 @@ export default function Landing(){
             {/**Features */}
 
             <section>
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-4">
-                <h2 class="text-primary text-sm font-bold uppercase tracking-widest">Core Features</h2>
-                <h3 class="text-slate-900 dark:text-white text-4xl font-black tracking-tight">Designed for Your Peace of Mind</h3>
-                <p class="text-slate-600 dark:text-slate-400 text-lg">Experience a journaling tool that prioritizes your privacy, productivity, and personal reflection.</p>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-4">
+                <h2 className="text-primary text-sm font-bold uppercase tracking-widest">Core Features</h2>
+                <h3 className="text-slate-900 dark:text-white text-4xl font-black tracking-tight">Designed for Your Peace of Mind</h3>
+                <p className="text-slate-600 dark:text-slate-400 text-lg">Experience a journaling tool that prioritizes your privacy, productivity, and personal reflection.</p>
                 </div>
-                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <Feature
                 icon="lock"
                 title="Private Encryption"
@@ -132,11 +132,11 @@ export default function Landing(){
 
             <section className="py-24" id="how-it-works">
 
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex flex-col lg:flex-row gap-16 items-center">
-                    <div class="w-full lg:w-1/2">
-                    <h2 class="text-slate-900 dark:text-white text-4xl font-black mb-8">How It Works</h2>
-                    <div class="space-y-0">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex flex-col lg:flex-row gap-16 items-center">
+                    <div className="w-full lg:w-1/2">
+                    <h2 className="text-slate-900 dark:text-white text-4xl font-black mb-8">How It Works</h2>
+                    <div className="space-y-0">
                 <HowItWorks
                 num="1"
                 title="Create Account"
@@ -154,12 +154,12 @@ export default function Landing(){
                 />
                     </div>
                     </div>
-                    <div class="w-full lg:w-1/2">
-                    <div class="rounded-3xl overflow-hidden shadow-2xl bg-slate-900 aspect-square relative" data-alt="A peaceful person using a digital journal in a cozy room" 
+                    <div className="w-full lg:w-1/2">
+                    <div className="rounded-3xl overflow-hidden shadow-2xl bg-slate-900 aspect-square relative" data-alt="A peaceful person using a digital journal in a cozy room" 
                     style={{backgroundImage: `url(${HowImg})`}}>
-                    <div class="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent"></div>
-                    <div class="absolute bottom-8 left-8 right-8 p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
-                    <p class="text-white font-medium italic">"Journaling with MindVault has helped me process my daily stress and see how much I've grown this year."</p>
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent"></div>
+                    <div className="absolute bottom-8 left-8 right-8 p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
+                    <p className="text-white font-medium italic">"Journaling with MindVault has helped me process my daily stress and see how much I've grown this year."</p>
                     </div>
                     </div>
                     </div>
@@ -169,10 +169,10 @@ export default function Landing(){
 
             {/**Testimonials */}
 
-           <section class="py-24 bg-primary/5" id="testimonials">
-           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-            <h2 class="text-slate-900 dark:text-white text-3xl font-bold">Trusted by Mindful Individuals</h2>
+           <section className="py-24 bg-primary/5" id="testimonials">
+           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+            <h2 className="text-slate-900 dark:text-white text-3xl font-bold">Trusted by Mindful Individuals</h2>
             </div></div>
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {testimonials.map((t) => (
@@ -184,16 +184,16 @@ export default function Landing(){
 
             {/*reach out*/ }
 
-                <section class="py-24 bg-primary text-white text-center overflow-hidden relative">
-                <div class="absolute inset-0 bg-primary opacity-90"></div>
-                <div class="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-                <div class="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
-                <div class="relative z-10 max-w-4xl mx-auto px-4">
-                <h2 class="text-4xl md:text-5xl font-black mb-6">Start your private journal today</h2>
-                <p class="text-white/80 text-lg mb-10 max-w-2xl mx-auto">Join thousands of others who have found clarity and peace of mind. Your first 30 days are completely free.</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button class="bg-white text-primary text-lg font-bold h-16 px-10 rounded-xl hover:scale-105 transition-transform w-full sm:w-auto">Get Started Free</button>
-                <p class="text-sm text-white/60">No credit card required.</p>
+                <section className="py-24 bg-primary text-white text-center overflow-hidden relative">
+                <div className="absolute inset-0 bg-primary opacity-90"></div>
+                <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+                <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
+                <div className="relative z-10 max-w-4xl mx-auto px-4">
+                <h2 className="text-4xl md:text-5xl font-black mb-6">Start your private journal today</h2>
+                <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">Join thousands of others who have found clarity and peace of mind. Your first 30 days are completely free.</p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button className="bg-white text-primary text-lg font-bold h-16 px-10 rounded-xl hover:scale-105 transition-transform w-full sm:w-auto">Get Started Free</button>
+                <p className="text-sm text-white/60">No credit card required.</p>
                 </div>
                 </div>
                 </section>
@@ -201,62 +201,62 @@ export default function Landing(){
                 
         </main>
 
-                        <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-16">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12">
-                <div class="col-span-2 lg:col-span-2 flex flex-col gap-6">
-                <div class="flex items-center gap-2">
-                <div class="flex items-center justify-center size-8 bg-primary rounded-lg text-white">
-                <span class="material-symbols-outlined text-xl">auto_stories</span>
+                        <footer className="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12">
+                <div className="col-span-2 lg:col-span-2 flex flex-col gap-6">
+                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center size-8 bg-primary rounded-lg text-white">
+                <span className="material-symbols-outlined text-xl">auto_stories</span>
                 </div>
-                <h2 class="text-slate-900 dark:text-white text-lg font-bold tracking-tight">MindVault</h2>
+                <h2 className="text-slate-900 dark:text-white text-lg font-bold tracking-tight">MindVault</h2>
                 </div>
-                <p class="text-slate-500 dark:text-slate-400 max-w-xs">
+                <p className="text-slate-500 dark:text-slate-400 max-w-xs">
                                         The world's most private digital journal. Designed for reflection, clarity, and growth.
                                     </p>
-                <div class="flex gap-4">
-                <a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
-                <a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
-                <a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+                <div className="flex gap-4">
+                <a className="text-slate-400 hover:text-primary transition-colors" href="#"><span className="material-symbols-outlined">public</span></a>
+                <a className="text-slate-400 hover:text-primary transition-colors" href="#"><span className="material-symbols-outlined">share</span></a>
+                <a className="text-slate-400 hover:text-primary transition-colors" href="#"><span className="material-symbols-outlined">mail</span></a>
                 </div>
                 </div>
                 <div>
-                <h5 class="text-slate-900 dark:text-white font-bold mb-6">Product</h5>
-                <ul class="flex flex-col gap-4 text-slate-500 dark:text-slate-400 text-sm">
-                <li><a class="hover:text-primary transition-colors" href="#">Features</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#">Security</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#">Mobile App</a></li>
+                <h5 className="text-slate-900 dark:text-white font-bold mb-6">Product</h5>
+                <ul className="flex flex-col gap-4 text-slate-500 dark:text-slate-400 text-sm">
+                <li><a className="hover:text-primary transition-colors" href="#">Features</a></li>
+                <li><a className="hover:text-primary transition-colors" href="#">Pricing</a></li>
+                <li><a className="hover:text-primary transition-colors" href="#">Security</a></li>
+                <li><a className="hover:text-primary transition-colors" href="#">Mobile App</a></li>
                 </ul>
                 </div>
                 <div>
-                <h5 class="text-slate-900 dark:text-white font-bold mb-6">Company</h5>
-                <ul class="flex flex-col gap-4 text-slate-500 dark:text-slate-400 text-sm">
-                <li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#">Press</a></li>
+                <h5 className="text-slate-900 dark:text-white font-bold mb-6">Company</h5>
+                <ul className="flex flex-col gap-4 text-slate-500 dark:text-slate-400 text-sm">
+                <li><a className="hover:text-primary transition-colors" href="#">About Us</a></li>
+                <li><a className="hover:text-primary transition-colors" href="#">Blog</a></li>
+                <li><a className="hover:text-primary transition-colors" href="#">Careers</a></li>
+                <li><a className="hover:text-primary transition-colors" href="#">Press</a></li>
                 </ul>
                 </div>
                 <div>
-                <h5 class="text-slate-900 dark:text-white font-bold mb-6">Legal</h5>
-                <ul class="flex flex-col gap-4 text-slate-500 dark:text-slate-400 text-sm">
-                <li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#">Compliance</a></li>
+                <h5 className="text-slate-900 dark:text-white font-bold mb-6">Legal</h5>
+                <ul className="flex flex-col gap-4 text-slate-500 dark:text-slate-400 text-sm">
+                <li><a className="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+                <li><a className="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+                <li><a className="hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
+                <li><a className="hover:text-primary transition-colors" href="#">Compliance</a></li>
                 </ul>
                 </div>
                 </div>
-                <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs">
+                <div className="mt-16 pt-8 border-t border-slate-200 dark:border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs">
                 <p>© 2024 MindVault Journal. All rights reserved.</p>
-                <div class="flex gap-6">
-                <button class="flex items-center gap-1 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
-                <span class="material-symbols-outlined text-sm">language</span>
+                <div className="flex gap-6">
+                <button className="flex items-center gap-1 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+                <span className="material-symbols-outlined text-sm">language</span>
                                         English (US)
                                     </button>
-                <button class="flex items-center gap-1 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
-                <span class="material-symbols-outlined text-sm">light_mode</span>
+                <button className="flex items-center gap-1 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+                <span className="material-symbols-outlined text-sm">light_mode</span>
                                         Light Mode
                                     </button>
                 </div>

@@ -69,18 +69,18 @@ export default function Register(){
             </div>
             <div className="flex items-center gap-4">
             <span className="hidden md:inline text-sm text-slate-500 dark:text-slate-400">Already have an account?</span>
-            <Link to="/login" class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary/10 text-primary hover:bg-primary/20 transition-colors text-sm font-bold">
+            <Link to="/login" className="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary/10 text-primary hover:bg-primary/20 transition-colors text-sm font-bold">
                                     Log In
                                 </Link>
             </div>
             </header>
         </section>
         <main className="flex flex-1 justify-center py-12 px-6 md:px-10 lg:px-40">
-            <div class="w-full max-w-[480px] flex flex-col gap-8">
+            <div className="w-full max-w-[480px] flex flex-col gap-8">
           
-            <div class="flex flex-col gap-3">
-            <h1 class="text-4xl font-black tracking-tight text-slate-900 dark:text-white">Create your Vault</h1>
-            <p class="text-slate-600 dark:text-slate-400 text-lg">Start your private journey with military-grade end-to-end encryption.</p>
+            <div className="flex flex-col gap-3">
+            <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white">Create your Vault</h1>
+            <p className="text-slate-600 dark:text-slate-400 text-lg">Start your private journey with military-grade end-to-end encryption.</p>
             </div>
 
             {message && (

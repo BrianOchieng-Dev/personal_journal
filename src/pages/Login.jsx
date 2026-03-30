@@ -55,7 +55,7 @@ export default function Login(){
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white">
             <span className="material-symbols-outlined text-2xl">shield_lock</span>
             </div>
-            <h2 className="text-xl font-bold tracking-tight">Mid`</h2>
+            <h2 className="text-xl font-bold tracking-tight">MindVault</h2>
             </div>
             <div className="flex items-center gap-4">
             <span className="hidden md:inline text-sm text-slate-500 dark:text-slate-400">Don't have an account?</span>
