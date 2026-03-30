@@ -1,5 +1,6 @@
 import { db } from '../firebase/firebase';
 import { toJSDate } from '../utils/formatDate';
+import { COLLECTIONS } from '../utils/constants';
 import { 
   collection, 
   addDoc, 
@@ -13,15 +14,22 @@ import {
   getDoc
 } from 'firebase/firestore';
 
-const COLLECTION_NAME = 'entries';
-
 export const journalService = {
-  // Create a new entry
-  async createEntry(userId, entryData) {
+  // Create a new entry (Encrypted)
+  async createEntry(userId, entryData, encryptFn) {
     try {
-      const docRef = await addDoc(collection(db, COLLECTION_NAME), {
+      const dataToSave = { ...entryData };
+      
+      // Encrypt sensitive fields if encrypt function is provided
+      if (encryptFn) {
+        if (dataToSave.content) dataToSave.content = encryptFn(dataToSave.content);
+        if (dataToSave.title) dataToSave.title = encryptFn(dataToSave.title);
+        dataToSave.isEncrypted = true;
+      }
+
+      const docRef = await addDoc(collection(db, COLLECTIONS.ENTRIES), {
         userId,
-        ...entryData,
+        ...dataToSave,
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
       });
@@ -32,12 +40,20 @@ export const journalService = {
     }
   },
 
-  // Update an existing entry
-  async updateEntry(entryId, entryData) {
+  // Update an existing entry (Encrypted)
+  async updateEntry(entryId, entryData, encryptFn) {
     try {
-      const docRef = doc(db, COLLECTION_NAME, entryId);
+      const dataToUpdate = { ...entryData };
+      
+      if (encryptFn) {
+        if (dataToUpdate.content) dataToUpdate.content = encryptFn(dataToUpdate.content);
+        if (dataToUpdate.title) dataToUpdate.title = encryptFn(dataToUpdate.title);
+        dataToUpdate.isEncrypted = true;
+      }
+
+      const docRef = doc(db, COLLECTIONS.ENTRIES, entryId);
       await updateDoc(docRef, {
-        ...entryData,
+        ...dataToUpdate,
         updatedAt: serverTimestamp(),
       });
     } catch (error) {
@@ -49,7 +65,7 @@ export const journalService = {
   // Delete an entry
   async deleteEntry(entryId) {
     try {
-      const docRef = doc(db, COLLECTION_NAME, entryId);
+      const docRef = doc(db, COLLECTIONS.ENTRIES, entryId);
       await deleteDoc(docRef);
     } catch (error) {
       console.error("Error deleting document: ", error);
@@ -57,21 +73,31 @@ export const journalService = {
     }
   },
 
-  // Get all entries for a user
-  async getEntries(userId) {
+  // Get all entries for a user (Decrypted)
+  async getEntries(userId, decryptFn) {
     try {
       const q = query(
-        collection(db, COLLECTION_NAME), 
+        collection(db, COLLECTIONS.ENTRIES), 
         where("userId", "==", userId)
       );
       const querySnapshot = await getDocs(q);
-      const entries = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-        // Convert Firestore timestamp to JS Date if possible
-        createdAt: toJSDate(doc.data().createdAt),
-        updatedAt: toJSDate(doc.data().updatedAt),
-      }));
+      const entries = querySnapshot.docs.map(doc => {
+        const data = doc.data();
+        const entry = {
+          id: doc.id,
+          ...data,
+          createdAt: toJSDate(data.createdAt),
+          updatedAt: toJSDate(data.updatedAt),
+        };
+
+        // Decrypt if necessary
+        if (data.isEncrypted && decryptFn) {
+          if (entry.content) entry.content = decryptFn(entry.content);
+          if (entry.title) entry.title = decryptFn(entry.title);
+        }
+
+        return entry;
+      });
       
       // Sort in-memory to avoid mandatory composite index
       return entries.sort((a, b) => {
@@ -85,13 +111,21 @@ export const journalService = {
     }
   },
 
-  // Get a single entry by ID
-  async getEntry(entryId) {
+  // Get a single entry by ID (Decrypted)
+  async getEntry(entryId, decryptFn) {
     try {
-      const docRef = doc(db, COLLECTION_NAME, entryId);
+      const docRef = doc(db, COLLECTIONS.ENTRIES, entryId);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        return { id: docSnap.id, ...docSnap.data() };
+        const data = docSnap.data();
+        const entry = { id: docSnap.id, ...data };
+        
+        if (data.isEncrypted && decryptFn) {
+          if (entry.content) entry.content = decryptFn(entry.content);
+          if (entry.title) entry.title = decryptFn(entry.title);
+        }
+        
+        return entry;
       } else {
         return null;
       }

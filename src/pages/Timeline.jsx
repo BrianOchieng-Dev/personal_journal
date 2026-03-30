@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useVault } from '../context/VaultContext';
 import { journalService } from '../services/journalService';
 import { formatTimelineDate, formatMonthYear } from '../utils/formatDate';
 import Sidebar from '../components/Sidebar';
 
 export default function Timeline() {
   const { currentUser } = useAuth();
+  const { decrypt, isLocked } = useVault();
   const [entries, setEntries] = useState([]);
   const [filteredEntries, setFilteredEntries] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,7 +19,7 @@ export default function Timeline() {
     const fetchEntries = async () => {
       if (currentUser) {
         try {
-          const data = await journalService.getEntries(currentUser.uid);
+          const data = await journalService.getEntries(currentUser.uid, isLocked ? null : decrypt);
           setEntries(data);
           setFilteredEntries(data);
         } catch (error) {
@@ -28,7 +30,7 @@ export default function Timeline() {
       }
     };
     fetchEntries();
-  }, [currentUser]);
+  }, [currentUser, isLocked, decrypt]);
 
   useEffect(() => {
     const filtered = entries.filter(entry => 
@@ -143,12 +145,19 @@ export default function Timeline() {
                           >
                             <div className="flex justify-between items-start mb-3">
                               <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover/card:text-primary transition-colors">
-                                {entry.title || 'Untitled Entry'}
+                                {isLocked && entry.isEncrypted ? "[Encrypted Content]" : (entry.title || 'Untitled Entry')}
                               </h3>
-                              <span className="material-symbols-outlined text-slate-300 group-hover/card:text-primary opacity-0 group-hover/card:opacity-100 transition-all transform translate-x-2 group-hover/card:translate-x-0">arrow_forward_ios</span>
+                              <div className="flex items-center gap-2">
+                                {entry.isEncrypted && (
+                                    <span className={`material-symbols-outlined text-sm ${isLocked ? 'text-amber-500' : 'text-green-500'}`}>
+                                        {isLocked ? 'lock' : 'lock_open'}
+                                    </span>
+                                )}
+                                <span className="material-symbols-outlined text-slate-300 group-hover/card:text-primary opacity-0 group-hover/card:opacity-100 transition-all transform translate-x-2 group-hover/card:translate-x-0">arrow_forward_ios</span>
+                              </div>
                             </div>
                             <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed line-clamp-2">
-                              {entry.content?.replace(/<[^>]*>/g, '') || 'No content exploration today...'}
+                              {isLocked && entry.isEncrypted ? "••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••" : (entry.content?.replace(/<[^>]*>/g, '') || 'No content exploration today...')}
                             </p>
                           </Link>
                         </div>
