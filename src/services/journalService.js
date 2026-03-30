@@ -62,17 +62,23 @@ export const journalService = {
     try {
       const q = query(
         collection(db, COLLECTION_NAME), 
-        where("userId", "==", userId),
-        orderBy("createdAt", "desc")
+        where("userId", "==", userId)
       );
       const querySnapshot = await getDocs(q);
-      return querySnapshot.docs.map(doc => ({
+      const entries = querySnapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data(),
         // Convert Firestore timestamp to JS Date if possible
         createdAt: doc.data().createdAt?.toDate(),
         updatedAt: doc.data().updatedAt?.toDate(),
       }));
+      
+      // Sort in-memory to avoid mandatory composite index
+      return entries.sort((a, b) => {
+        const dateA = a.createdAt || 0;
+        const dateB = b.createdAt || 0;
+        return dateB - dateA;
+      });
     } catch (error) {
       console.error("Error getting documents: ", error);
       throw error;
