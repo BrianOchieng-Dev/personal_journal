@@ -14,6 +14,7 @@
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/vite": "^4.2.1",
+    "crypto-js": "^4.2.0",
     "date-fns": "^4.1.0",
     "firebase": "^12.10.0",
     "jodit": "^4.11.13",
